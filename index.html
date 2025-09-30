@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RainMatch - The Moneymaking App for Salespeople</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a2942 0%, #2d4a6f 50%, #4a6b8a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            color: white;
+        }
+
+        .tagline {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: #fbbf24;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #1f2937;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #111827;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fbbf24;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .visual-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .illustration {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .illustration::before {
+            content: '🤝';
+            font-size: 8rem;
+            opacity: 0.3;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .commission-badge {
+            top: 20px;
+            right: 20px;
+        }
+
+        .partnerships-badge {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .badge-label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #16a34a;
+        }
+
+        .partnerships-badge .badge-value {
+            color: #1f2937;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: #f9fafb;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .role-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .role-tab {
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .role-tab.active {
+            background: #1f2937;
+            color: white;
+        }
+
+        .role-tab.sellers {
+            background: #1f2937;
+            color: white;
+        }
+
+        .role-tab.partners {
+            background: #fbbf24;
+            color: #1f2937;
+        }
+
+        .role-tab:not(.active) {
+            background: white;
+            border: 2px solid #e5e7eb;
+            color: #6b7280;
+        }
+
+        .role-tab:not(.active):hover {
+            border-color: #1f2937;
+            color: #1f2937;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .sellers-path .step-icon {
+            background: #1f2937;
+            color: white;
+        }
+
+        .partners-path .step-icon {
+            background: #fbbf24;
+            color: #1f2937;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .step-number {
+            background: #f3f4f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .step-description {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: #1f2937;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: #fbbf24;
+            border-width: 3px;
+            background: linear-gradient(135deg, #fffbeb 0%, white 100%);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fbbf24;
+            color: #1f2937;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .plan-description {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .plan-features {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: #16a34a;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .cta-button {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-visual {
+                order: 1;
+            }
+
+            .stats {
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="tagline">💰 The Moneymaking App for Salespeople</div>
+                <h1>Turn Your <span class="highlight">Network</span> into Revenue</h1>
+                <p class="hero-description">
+                    RainMatch connects sales professionals with strategic partners to accelerate deal closure through commission-sharing collaborations.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Get Started Free →</a>
+                    <a href="#" class="btn btn-secondary">Watch Demo</a>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">$100M+</div>
+                        <div class="stat-label">Revenue Potential</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">31M+</div>
+                        <div class="stat-label">Sales Professionals</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">700K+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-card">
+                    <div class="illustration"></div>
+                    <div class="floating-badge commission-badge">
+                        <div class="badge-label">Commission Earned</div>
+                        <div class="badge-value">$12,500</div>
+                    </div>
+                    <div class="floating-badge partnerships-badge">
+                        <div class="badge-label">Active Partnerships</div>
+                        <div class="badge-value">23</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>How RainMatch Works</h2>
+                <p>Two distinct paths to success - whether you're looking to accelerate your sales or monetize your network expertise</p>
+            </div>
+
+            <div class="role-tabs">
+                <div class="role-tab sellers active" onclick="showRole('sellers')">For Sellers</div>
+                <div class="role-tab partners" onclick="showRole('partners')">For Partners</div>
+            </div>
+
+            <div id="sellers-path" class="sellers-path">
+                <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 2rem; color: #1f2937;">Accelerate Your Sales</h3>
+                <p style="text-align: center; color: #6b7280; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Expand your network and close deals faster with strategic Partners</p>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon">📝</div>
+                        <div class="step-header">
+                            <div class="step-title">Post Projects</div>
+                            <div class="step-number">Step 1</div>
+                        </div>
+                        <div class="step-description">
+                            Create detailed project listings with product descriptions, target customers, and commission offers
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">🎯</div>
+                        <div class="step-header">
+                            <div class="step-title">Get Matched</div>
+                            <div class="step-number">Step 2</div>
+                        </div>
+                        <div class="step-description">
+                            Receive 2 curated Partner matches daily based on AI recommendations and mutual interest
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">🤝</div>
+                        <div class="step-header">
+                            <div class="step-title">Connect & Collaborate</div>
+                            <div class="step-number">Step 3</div>
+                        </div>
+                        <div class="step-description">
+                            Work together with Partners to leverage their networks and expertise to close deals faster
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">📈</div>
+                        <div class="step-header">
+                            <div class="step-title">Share Success</div>
+                            <div class="step-number">Step 4</div>
+                        </div>
+                        <div class="step-description">
+                            Split commissions according to agreed terms and build credibility for future partnerships
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="partners-path" class="partners-path hidden">
+                <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 2rem; color: #1f2937;">Monetize Your Network</h3>
+                <p style="text-align: center; color: #6b7280; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">Turn your expertise and connections into recurring revenue</p>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon">👀</div>
+                        <div class="step-header">
+                            <div class="step-title">Browse Opportunities</div>
+                            <div class="step-number">Step 1</div>
+                        </div>
+                        <div class="step-description">
+                            View up to 10 Seller project matches daily based on your expertise and interests
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">📋</div>
+                        <div class="step-header">
+                            <div class="step-title">Evaluate Projects</div>
+                            <div class="step-number">Step 2</div>
+                        </div>
+                        <div class="step-description">
+                            Review project details, commission structures, and Seller profiles to find the best fit
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">💡</div>
+                        <div class="step-header">
+                            <div class="step-title">Express Interest</div>
+                            <div class="step-number">Step 3</div>
+                        </div>
+                        <div class="step-description">
+                            Like promising projects to signal partnership interest and initiate collaboration
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">💰</div>
+                        <div class="step-header">
+                            <div class="step-title">Generate Revenue</div>
+                            <div class="step-number">Step 4</div>
+                        </div>
+                        <div class="step-description">
+                            Leverage your network and expertise to help close deals and earn commissions
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that fits your needs and scale as you grow</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">Free</div>
+                    <div class="plan-price">$0<span>/month</span></div>
+                    <div class="plan-description">Perfect for getting started</div>
+                    <div class="plan-features">
+                        <div class="feature-item">Basic project posting</div>
+                        <div class="feature-item">2 Partner matches per day (Sellers)</div>
+                        <div class="feature-item">10 Seller matches per day (Partners)</div>
+                        <div class="feature-item">In-app messaging</div>
+                        <div class="feature-item">Profile creation</div>
+                    </div>
+                    <a href="#" class="btn btn-secondary cta-button">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="plan-name">Team</div>
+                    <div class="plan-price">$29<span>/month</span></div>
+                    <div class="plan-description">For serious sales professionals</div>
+                    <div class="plan-features">
+                        <div class="feature-item">Enhanced project visibility</div>
+                        <div class="feature-item">20 Partner matches per day</div>
+                        <div class="feature-item">5 standardized contracts/month</div>
+                        <div class="feature-item">Priority customer support</div>
+                        <div class="feature-item">Advanced profile features</div>
+                        <div class="feature-item">Deal dashboard analytics</div>
+                    </div>
+                    <a href="#" class="btn btn-primary cta-button">Start Free Trial</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-price">$99<span>/month</span></div>
+                    <div class="plan-description">Maximum growth potential</div>
+                    <div class="plan-features">
+                        <div class="feature-item">Unlimited matches</div>
+                        <div class="feature-item">Featured project placement</div>
+                        <div class="feature-item">Unlimited contracts</div>
+                        <div class="feature-item">Advanced analytics & reporting</div>
+                        <div class="feature-item">Dedicated account manager</div>
+                        <div class="feature-item">API access</div>
+                        <div class="feature-item">Premium badge & verification</div>
+                    </div>
+                    <a href="#" class="btn btn-secondary cta-button">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="section-container">
+            <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">RainMatch</h3>
+            <p style="margin-bottom: 2rem;">Turn your network into revenue</p>
+            <p>&copy; 2025 RainMatch. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showRole(role) {
+            const sellersPath = document.getElementById('sellers-path');
+            const partnersPath = document.getElementById('partners-path');
+            const tabs = document.querySelectorAll('.role-tab');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            if (role === 'sellers') {
+                sellersPath.classList.remove('hidden');
+                partnersPath.classList.add('hidden');
+                document.querySelector('.role-tab.sellers').classList.add('active');
+            } else {
+                partnersPath.classList.remove('hidden');
+                sellersPath.classList.add('hidden');
+                document.querySelector('.role-tab.partners').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
