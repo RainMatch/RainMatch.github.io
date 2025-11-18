@@ -510,6 +510,16 @@ footer p {
     color: rgba(255, 255, 255, 0.7);
 }
 
+footer a {
+    color: #fbbf24;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .hero-container {
