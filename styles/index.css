@@ -2,7 +2,7 @@
 
 
 * {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: white;
@@ -66,6 +66,12 @@ a {
     max-height: 4rem;
 }
 
+.logo-large {
+    object-fit: contain;
+    aspect-ratio: 1;
+    max-height: 6rem;
+}
+
 .store-badges {
     max-height: 4rem;
 }
@@ -78,6 +84,7 @@ a {
     flex-direction: column;
     align-items: flex-start;
 }
+
 
 .hero-img {
     border-radius: 16px;
@@ -540,7 +547,8 @@ footer a:hover {
     }
 
     .hero-content {
-        flex: 0
+        flex: 0;
+        align-items: center;
     }
 
     .carousel-container {
