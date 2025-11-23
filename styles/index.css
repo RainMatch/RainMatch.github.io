@@ -168,47 +168,106 @@ a {
     margin-bottom: 4rem;
 }
 
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: white;
+}
+
 .section-header p {
     font-size: 1.1rem;
     color: hsl(220, 9%, 70%);
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
+    line-height: 1.8;
 }
 
+/* Who is it for section improvements */
 .who-its-for {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    max-width: 1000px;
-    justify-self: center;
-    margin-bottom: 4rem;
-
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 6rem auto;
 }
 
 .who-its-for .box {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 16px;
-    border-radius: 16px;
-    color: white
+    padding: 2.5rem;
+    border-radius: 20px;
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
 
+.who-its-for .box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--primary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.who-its-for .sellers::before {
+    background: linear-gradient(90deg, var(--primary), #60a5fa);
+}
+
+.who-its-for .partners::before {
+    background: linear-gradient(90deg, var(--yellow), #fcd34d);
+}
+
+.who-its-for .box:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.who-its-for .box:hover::before {
+    opacity: 1;
 }
 
 .who-its-for h3 {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 2rem;
-}
-/* 
-.who-its-for .sellers {
-    border: 2px solid var(--primary);
-    text-decoration-color: var(--primary);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, white, rgba(255, 255, 255, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.who-its-for .partners {
-    border: 2px solid var(--yellow);
-    text-decoration-color: var(--yellow);
-} */
+.who-its-for .sellers h3 {
+    background: linear-gradient(135deg, var(--primary), #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.who-its-for .partners h3 {
+    background: linear-gradient(135deg, var(--yellow), #fcd34d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.who-its-for p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+}
+
 
 .role-tabs {
     display: flex;
