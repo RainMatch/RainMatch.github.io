@@ -13,6 +13,8 @@
     align-items: center;
     overflow-x: hidden;
     --max-width: 1440px;
+    --primary: hsl(210, 97%, 51%);
+    --yellow: #fbbf24;
 }
 
 body {
@@ -96,15 +98,6 @@ a {
     object-fit: contain;
 }
 
-.tagline {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-}
-
 .hero h1 {
     font-size: 3.5rem;
     font-weight: 700;
@@ -123,13 +116,6 @@ a {
     margin-bottom: 2.5rem;
     line-height: 1.8;
 }
-
-.cta-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 3rem;
-}
-
 
 .btn {
     cursor: pointer;
@@ -156,92 +142,20 @@ a {
     background-color: hsl(210, 97%, 45%);
 }
 
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-
-
-.visual-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 3rem;
-    position: relative;
-}
-
-.illustration {
-    width: 100%;
-    height: 400px;
-    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.illustration::before {
-    content: '🤝';
-    font-size: 8rem;
-    opacity: 0.3;
-}
-
-.floating-badge {
-    position: absolute;
-    background: white;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    animation: float 3s ease-in-out infinite;
-}
-
-.commission-badge {
-    top: 20px;
-    right: 20px;
-}
-
-.partnerships-badge {
-    bottom: 20px;
-    right: 20px;
-}
-
-.badge-label {
-    font-size: 0.75rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.badge-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #16a34a;
-}
-
-.partnerships-badge .badge-value {
-    color: #1f2937;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
 
 /* How It Works Section */
 .how-it-works {
     padding: 6rem 2rem;
     border-radius: 16px;
     width: 100%;
+}
 
+.how-it-works h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+    text-align: center;
 }
 
 .section-container {
@@ -254,19 +168,47 @@ a {
     margin-bottom: 4rem;
 }
 
-.section-header h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: white;
-}
-
 .section-header p {
     font-size: 1.1rem;
     color: hsl(220, 9%, 70%);
     max-width: 800px;
     margin: 0 auto;
 }
+
+.who-its-for {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1000px;
+    justify-self: center;
+    margin-bottom: 4rem;
+
+}
+
+.who-its-for .box {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 16px;
+    border-radius: 16px;
+    color: white
+
+}
+
+.who-its-for h3 {
+    font-weight: bold;
+    font-size: 2rem;
+}
+/* 
+.who-its-for .sellers {
+    border: 2px solid var(--primary);
+    text-decoration-color: var(--primary);
+}
+
+.who-its-for .partners {
+    border: 2px solid var(--yellow);
+    text-decoration-color: var(--yellow);
+} */
 
 .role-tabs {
     display: flex;
@@ -563,22 +505,10 @@ footer a:hover {
     }
 
 
-    .stats {
-        justify-content: center;
-    }
-
-    .cta-buttons {
-        justify-content: center;
-    }
-
     .steps-grid {
         grid-template-columns: 1fr;
     }
 
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-    }
 }
 
 @media (max-width: 768px) {
