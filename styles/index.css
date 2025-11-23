@@ -348,6 +348,18 @@ footer a:hover {
     text-decoration: underline;
 }
 
+.social-links {
+    display: flex;
+    flex-direction: row;
+    max-height: 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-links a {
+    cursor: pointer;
+}
 
 
 /* Carousel */
