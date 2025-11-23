@@ -2,7 +2,7 @@
 
 
 * {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
     color: white;
@@ -11,6 +11,7 @@
 
 :root {
     align-items: center;
+    overflow-x: hidden;
     --max-width: 1440px;
 }
 
@@ -49,10 +50,14 @@ a {
     min-height: 100vh;
     margin-top: -100px;
     max-width: var(--max-width);
+    padding-right: 2rem;
+    padding-left: 2rem;
     width: 100%;
     display: flex;
     align-items: center;
     position: relative;
+    z-index: 1;
+    gap: 2rem;
     /* overflow: hidden; */
 }
 
@@ -65,23 +70,6 @@ a {
     max-height: 4rem;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.hero-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-    gap: 2rem;
-}
 
 .hero-content {
     color: white;
@@ -127,12 +115,6 @@ a {
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 2.5rem;
     line-height: 1.8;
-}
-
-.hero-visual {
-    display: flex;
-    flex: 1;
-    justify-content: center;
 }
 
 .cta-buttons {
@@ -423,22 +405,25 @@ footer a:hover {
 
 .carousel-container {
     width: 100%;
-        /* max-width: 1200px;
-        height: 500px; */
+    max-width: 100%;
+    min-height: 60vh;
+    max-height: 60vh;
+    flex: 1;
     position: relative;
     perspective: 1500px;
 }
 
 .carousel {
-    width: 100%;
-    height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
     position: relative;
     transform-style: preserve-3d;
 }
 
 .carousel-item {
     position: absolute;
-    max-height: 60vh;
+    max-height: 100%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -538,25 +523,37 @@ footer a:hover {
 @media (max-width: 1024px) {
     
     * {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     header {
         gap: 1rem;
     }
 
-    .hero-container {
-        grid-template-columns: 1fr;
+    .hero {
+        margin-top: 3rem;
+        flex-direction: column;
+        align-items: center;
+        gap: none;
+        width: 100%;
         text-align: center;
     }
 
     .hero-content {
-        order: 2;
+        flex: 0
     }
 
-    .hero-visual {
-        order: 1;
+    .carousel-container {
+        max-width: 100%;
     }
+
+    .carousel-item.left {
+        transform: translate(-50%, -50%) translateX(-150px) translateZ(-200px) scale(0.8);
+    }
+    .carousel-item.right {
+        transform: translate(-50%, -50%) translateX(150px) translateZ(-200px) scale(0.8);
+    }
+
 
     .stats {
         justify-content: center;
@@ -589,13 +586,31 @@ footer a:hover {
         font-size: 2.5rem;
     }
 
-    .stats {
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
+    .carousel-item.left {
+        transform: translate(-50%, -50%) translateX(-120px) translateZ(-200px) scale(0.8);
+    }
+    .carousel-item.right {
+        transform: translate(-50%, -50%) translateX(120px) translateZ(-200px) scale(0.8);
     }
 
-    .cta-buttons {
-        flex-direction: column;
+}
+
+
+@media (max-width: 540px) {
+
+    * {
+        font-size: 12px;
     }
+
+}
+
+@media (max-width: 400px) {
+
+    .carousel-item.left {
+        transform: translate(-50%, -50%) translateX(-100px) translateZ(-200px) scale(0.8);
+    }
+    .carousel-item.right {
+        transform: translate(-50%, -50%) translateX(100px) translateZ(-200px) scale(0.8);
+    }
+
 }
