@@ -1,0 +1,11 @@
+# Robots.txt for rainmatch.ai
+# https://rainmatch.ai
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://rainmatch.ai/sitemap.xml
+
+# Disallow verification/utility pages
+Disallow: /verified
