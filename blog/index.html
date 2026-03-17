@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - RainMatch | Business Partner Matching Insights</title>
+    <meta name="description"
+        content="Insights on business development, sales partnerships, and networking from the RainMatch team.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rainmatch.ai/blog/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/Logo_store_transparent.png">
+    <link rel="apple-touch-icon" href="../assets/Logo_store_transparent.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rainmatch.ai/blog/">
+    <meta property="og:title" content="Blog - RainMatch | Business Partner Matching Insights">
+    <meta property="og:description" content="Insights on business development, sales partnerships, and networking from the RainMatch team.">
+    <meta property="og:image" content="https://rainmatch.ai/assets/Logo_store_transparent.png">
+    <meta property="og:site_name" content="RainMatch">
+
+    <meta name="theme-color" content="#0D1117">
+    <link rel="stylesheet" href="../styles/index.css" />
+
+    <style>
+        .blog-main {
+            width: 100%;
+            padding: 5rem 2rem 4rem;
+        }
+
+        .blog-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .blog-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .blog-hero p {
+            font-size: 1.15rem;
+            color: hsl(220, 9%, 70%);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-card-content {
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .blog-card-date {
+            font-size: 0.85rem;
+            color: hsl(220, 9%, 55%);
+            margin-bottom: 0.6rem;
+        }
+
+        .blog-card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.75rem;
+            line-height: 1.35;
+        }
+
+        .blog-card-title a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .blog-card-title a:hover {
+            color: hsl(210, 97%, 65%);
+        }
+
+        .blog-card-excerpt {
+            color: hsl(220, 9%, 70%);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-card-link {
+            align-self: flex-start;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.25rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            min-width: 2.5rem;
+            text-align: center;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .page-btn.active {
+            background: hsl(210, 97%, 51%);
+            border-color: hsl(210, 97%, 51%);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+
+        .no-articles {
+            text-align: center;
+            color: hsl(220, 9%, 60%);
+            padding: 4rem 0;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 640px) {
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-583Q3ZDZ10"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-583Q3ZDZ10');
+</script>
+
+<body>
+    <header>
+        <a class="headerP1" style="align-items: center; display: flex; font-weight: bold;" href="../index.html">
+            <img class="logo" src="../assets/Logo_store_transparent.png" alt="RainMatch Logo" />
+            <span>RainMatch</span>
+        </a>
+
+        <a class="btn headerP2" href="../index.html">About</a>
+        <a class="btn headerP2" href="../faq.html">FAQ</a>
+        <a class="btn headerP2" href="../blog/index.html">Blog</a>
+        <a class="btn headerP2" href="../contact.html">Contact</a>
+        <a class="btn primary headerP1" href="#" onclick="redirectToStore(); return false;">Download ↗</a>
+        <span class="header-separator headerP2"></span>
+        <a class="btn headerP2" href="https://app.rainmatch.ai/sign-in">Sign In</a>
+        <a class="btn primary headerP2" href="https://app.rainmatch.ai/sign-up">Sign Up</a>
+    </header>
+
+    <main class="blog-main">
+        <div class="blog-container">
+            <div class="blog-hero">
+                <h1>Blog</h1>
+                <p>Insights on business development, sales partnerships, and networking.</p>
+            </div>
+
+            <div id="articles-grid" class="articles-grid"></div>
+            <div id="no-articles" class="no-articles" style="display:none;">No articles yet. Check back soon!</div>
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <h3 style="font-size: 1.5rem;">RainMatch</h3>
+            <p style="margin-bottom: 1rem;">Turn your network into revenue</p>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@rainmatch" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#fff" d="M16.6 5.82s.51.5 0 0A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48" />
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/rainmatch/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#fff" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                    </svg>
+                </a>
+                <a href="https://x.com/RainMatch2025" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                        <g fill="none">
+                            <g clip-path="url(#blogFooterX)">
+                                <path fill="#fff" d="M11.025.656h2.147L8.482 6.03L14 13.344H9.68L6.294 8.909l-3.87 4.435H.275l5.016-5.75L0 .657h4.43L7.486 4.71zm-.755 11.4h1.19L3.78 1.877H2.504z" />
+                            </g>
+                            <defs>
+                                <clipPath id="blogFooterX">
+                                    <path fill="#fff" d="M0 0h14v14H0z" />
+                                </clipPath>
+                            </defs>
+                        </g>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@rainmatch" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#fff" d="m10 15l5.19-3L10 9zm11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33-.22 2.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/rainmatch" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#fff" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
+                    </svg>
+                </a>
+            </div>
+            <p>
+                <a href="../index.html">Home</a> |
+                <a href="../faq.html">FAQ</a> |
+                <a href="../blog/index.html">Blog</a> |
+                <a href="../privacy.html">Privacy Policy</a> |
+                <a href="../contact.html">Contact Us</a>
+            </p>
+            <p style="margin-top: 1rem;">&copy; 2025 Rainmakers LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function redirectToStore() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(userAgent)) {
+                window.open('https://play.google.com/store/apps/details?id=com.rainmatch.app');
+            } else {
+                window.open('https://apps.apple.com/gb/app/rainmatch-partner-earn/id6754579970');
+            }
+        }
+
+        const ARTICLES_PER_PAGE = 6;
+
+        // To add a new article:
+        // 1. Create a folder under blog/ with the article id as the name
+        // 2. Add an index.html inside it with the article content
+        // 3. Add an entry to this array (newest first)
+        const articles = [
+            {
+                id: 'how-rainmatch-connects-sellers-and-partners',
+                title: 'How RainMatch Connects Sellers and Partners',
+                date: 'March 15, 2026',
+                excerpt: 'Discover the mechanics behind RainMatch\'s curated matching system and how it brings together the right Sellers and Partners to close more deals faster.',
+                headerImage: '../assets/Screenshot_20251123_130332_RainMatch.jpg'
+            },
+            {
+                id: 'getting-started-with-rainmatch',
+                title: 'Getting Started with RainMatch',
+                date: 'March 10, 2026',
+                excerpt: 'A step-by-step guide to setting up your RainMatch profile, posting your first project, and finding your ideal business partner.',
+                headerImage: null
+            }
+        ];
+
+        let currentPage = 1;
+        const totalPages = () => Math.ceil(articles.length / ARTICLES_PER_PAGE);
+
+        function formatCard(article) {
+            const imageHtml = article.headerImage
+                ? `<img class="blog-card-image" src="${article.headerImage}" alt="${article.title}" loading="lazy" />`
+                : '';
+            return `
+                <a class="blog-card" href="${article.id}/index.html">
+                    ${imageHtml}
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">${article.date}</div>
+                        <h2 class="blog-card-title">${article.title}</h2>
+                        <p class="blog-card-excerpt">${article.excerpt}</p>
+                        <span class="btn primary blog-card-link">Read More</span>
+                    </div>
+                </a>
+            `;
+        }
+
+        function renderPage(page) {
+            currentPage = page;
+            const grid = document.getElementById('articles-grid');
+            const noArticles = document.getElementById('no-articles');
+
+            if (articles.length === 0) {
+                grid.style.display = 'none';
+                noArticles.style.display = 'block';
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+
+            const start = (page - 1) * ARTICLES_PER_PAGE;
+            const pageArticles = articles.slice(start, start + ARTICLES_PER_PAGE);
+            grid.innerHTML = pageArticles.map(formatCard).join('');
+
+            renderPagination();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderPagination() {
+            const container = document.getElementById('pagination');
+            const pages = totalPages();
+            if (pages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = `<button class="page-btn" onclick="renderPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>← Prev</button>`;
+            for (let i = 1; i <= pages; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="renderPage(${i})">${i}</button>`;
+            }
+            html += `<button class="page-btn" onclick="renderPage(${currentPage + 1})" ${currentPage === pages ? 'disabled' : ''}>Next →</button>`;
+            container.innerHTML = html;
+        }
+
+        renderPage(1);
+    </script>
+</body>
+
+</html>
