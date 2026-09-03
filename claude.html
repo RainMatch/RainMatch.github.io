@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect RainMatch to Claude - RainMatch</title>
+    <meta name="description"
+        content="Connect RainMatch to Claude in a couple of minutes. Add the RainMatch connector to Claude web, desktop, or Claude Code and ask Claude to browse your matches, update your profile, and send partnership requests.">
+    <meta name="keywords"
+        content="RainMatch Claude connector, RainMatch MCP server, Model Context Protocol, Claude custom connector, AI sales assistant, business partner matching">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rainmatch.ai/claude.html">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/Logo_store_transparent.png">
+    <link rel="apple-touch-icon" href="assets/Logo_store_transparent.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rainmatch.ai/claude.html">
+    <meta property="og:title" content="Connect RainMatch to Claude - RainMatch">
+    <meta property="og:description"
+        content="Add the RainMatch connector to Claude and ask it to browse your matches, update your profile, and send partnership requests on your behalf.">
+    <meta property="og:image" content="https://rainmatch.ai/assets/Logo_store_transparent.png">
+    <meta property="og:site_name" content="RainMatch">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://rainmatch.ai/claude.html">
+    <meta name="twitter:title" content="Connect RainMatch to Claude - RainMatch">
+    <meta name="twitter:description"
+        content="Add the RainMatch connector to Claude and ask it to browse your matches, update your profile, and send partnership requests on your behalf.">
+    <meta name="twitter:image" content="https://rainmatch.ai/assets/Logo_store_transparent.png">
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#0D1117">
+    <link rel="stylesheet" href="styles/index.css" />
+
+    <style>
+        /* Claude Connector Page Styles */
+        .claude-header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .claude-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .claude-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .claude-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .claude-section {
+            margin-bottom: 3rem;
+        }
+
+        .claude-section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .claude-section p,
+        .claude-section li {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .claude-section p {
+            margin-bottom: 1rem;
+        }
+
+        .claude-section ul {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+
+        .claude-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .claude-section a {
+            color: #fbbf24;
+        }
+
+        .claude-section strong {
+            color: #fbbf24;
+        }
+
+        /* Numbered setup steps */
+        .setup-step {
+            display: flex;
+            gap: 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .setup-step-number {
+            flex-shrink: 0;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            background: hsl(210, 97%, 51%);
+            color: white;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .setup-step-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .setup-step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .setup-step-body p {
+            margin-bottom: 0;
+        }
+
+        /* Code blocks */
+        .code-block {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #0b0f16;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            margin: 1rem 0;
+        }
+
+        .code-block code {
+            flex: 1;
+            min-width: 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.95rem;
+            color: #fbbf24;
+        }
+
+        .copy-btn {
+            flex-shrink: 0;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(251, 191, 36, 0.2);
+            border-color: #fbbf24;
+            color: #fbbf24;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
+            border-left: 4px solid #fbbf24;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            color: #fbbf24;
+        }
+
+        /* Permissions table */
+        .table-scroll {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .perm-table {
+            width: 100%;
+            min-width: 520px;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .perm-table th,
+        .perm-table td {
+            text-align: left;
+            padding: 1rem 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            vertical-align: top;
+        }
+
+        .perm-table th {
+            color: white;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .perm-table tbody tr + tr td {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .perm-table code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            color: #fbbf24;
+            white-space: nowrap;
+        }
+
+        /* Example prompts */
+        .prompt-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .prompt-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid hsl(210, 97%, 51%);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons a {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-buttons .primary-btn {
+            background: hsl(210, 97%, 51%);
+            color: white;
+        }
+
+        .cta-buttons .primary-btn:hover {
+            background: hsl(210, 97%, 45%);
+            transform: translateY(-2px);
+        }
+
+        .cta-buttons .secondary-btn {
+            background: transparent;
+            color: #fbbf24;
+            border: 2px solid #fbbf24;
+        }
+
+        .cta-buttons .secondary-btn:hover {
+            background: #fbbf24;
+            color: #1f2937;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .claude-header h1 {
+                font-size: 2rem;
+            }
+
+            .claude-container {
+                padding: 1rem;
+            }
+
+            .setup-step {
+                padding: 1.25rem;
+                gap: 1rem;
+            }
+
+            .prompt-list {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons a {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-583Q3ZDZ10"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-583Q3ZDZ10');
+</script>
+
+<body>
+    <!-- Header -->
+    <header>
+        <a class="headerP1" style="align-items: center; display: flex; font-weight: bold;" href="index.html">
+            <img class="logo" src="assets/Logo_store_transparent.png" alt="RainMatch Logo" />
+            <span>RainMatch</span>
+        </a>
+
+        <a class="btn headerP2" href="index.html">About</a>
+        <a class="btn headerP2" href="faq.html">FAQ</a>
+        <a class="btn headerP2" href="blog/index.html">Blog</a>
+        <a class="btn headerP2" href="claude.html">Claude</a>
+        <a class="btn headerP2" href="contact.html">Contact</a>
+        <a class="btn primary headerP1" href="https://play.google.com/store/apps/details?id=com.rainmatch.app"
+            target="_blank">Download ↗ </a>
+        <span class="header-separator headerP2"></span>
+        <a class="btn headerP2" href="https://app.rainmatch.ai/sign-in">Sign In</a>
+        <a class="btn primary headerP2" href="https://app.rainmatch.ai/sign-up">Sign Up</a>
+    </header>
+
+    <!-- Page Header -->
+    <div class="claude-header">
+        <h1>Use RainMatch inside Claude</h1>
+        <p>Connect once, then ask Claude to browse your matches, update your profile, and send
+            partnership requests on your behalf.</p>
+    </div>
+
+    <!-- Content -->
+    <div class="claude-container">
+
+        <!-- Before you start -->
+        <div class="claude-section">
+            <h2 class="claude-section-title">Before you start</h2>
+            <p>You need a RainMatch account. If you don't have one yet,
+                <a href="https://app.rainmatch.ai/sign-up">sign up here</a> first — it takes a couple
+                of minutes.</p>
+            <p>The connector adds no new powers. It acts as <strong>you</strong>, and can only do
+                what you can already do in the RainMatch app. Nothing is shared with Claude until you
+                sign in and approve the connection, and you decide at that moment how much access to
+                grant.</p>
+        </div>
+
+        <!-- Claude web & desktop -->
+        <div class="claude-section">
+            <h2 class="claude-section-title">Connect from Claude web or desktop</h2>
+
+            <div class="setup-step">
+                <div class="setup-step-number">1</div>
+                <div class="setup-step-body">
+                    <div class="setup-step-title">Open your connector settings</div>
+                    <p>In Claude, go to <strong>Settings → Connectors</strong> and choose
+                        <strong>Add custom connector</strong>. Custom connectors are available on
+                        Claude's paid plans.</p>
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <div class="setup-step-number">2</div>
+                <div class="setup-step-body">
+                    <div class="setup-step-title">Paste the RainMatch endpoint</div>
+                    <p>Name it <strong>RainMatch</strong> and use this URL:</p>
+                    <div class="code-block">
+                        <code id="endpoint-url">https://api.rainmatch.ai/v1/mcp</code>
+                        <button class="copy-btn" type="button"
+                            data-copy-target="endpoint-url">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <div class="setup-step-number">3</div>
+                <div class="setup-step-body">
+                    <div class="setup-step-title">Sign in and approve</div>
+                    <p>Click <strong>Connect</strong>. A browser tab opens on RainMatch where you
+                        sign in and review what you're granting. Approve it, and the tab closes
+                        itself — you never paste a password or an API key into Claude.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Claude Code -->
+        <div class="claude-section">
+            <h2 class="claude-section-title">Connect from Claude Code</h2>
+
+            <div class="setup-step">
+                <div class="setup-step-number">1</div>
+                <div class="setup-step-body">
+                    <div class="setup-step-title">Add the server</div>
+                    <p>Run this in your terminal:</p>
+                    <div class="code-block">
+                        <code id="cli-command">claude mcp add --transport http rainmatch https://api.rainmatch.ai/v1/mcp</code>
+                        <button class="copy-btn" type="button"
+                            data-copy-target="cli-command">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setup-step">
+                <div class="setup-step-number">2</div>
+                <div class="setup-step-body">
+                    <div class="setup-step-title">Authenticate</div>
+                    <p>Start Claude Code, run <strong>/mcp</strong>, pick
+                        <strong>rainmatch</strong>, and choose <strong>Authenticate</strong>. The
+                        same browser approval flow opens. Once it completes, <strong>/mcp</strong>
+                        shows the connection as connected.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p>Paste the URL exactly as written, including the <code>/v1/mcp</code> path and with
+                    no trailing slash. RainMatch checks that the address you entered matches the one
+                    it publishes, character for character — a near miss stops the connection before
+                    the sign-in screen appears.</p>
+            </div>
+        </div>
+
+        <!-- Permissions -->
+        <div class="claude-section">
+            <h2 class="claude-section-title">What Claude can access</h2>
+            <p>The approval screen splits access in two, so you can grant reading without granting
+                acting:</p>
+
+            <div class="table-scroll">
+                <table class="perm-table">
+                    <thead>
+                        <tr>
+                            <th>Permission</th>
+                            <th>What it covers</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>rainmatch:read</code></td>
+                            <td>Your profile, verified partners, sellers and projects, your own
+                                projects, your match feed, and your likes and partnerships.</td>
+                        </tr>
+                        <tr>
+                            <td><code>rainmatch:write</code></td>
+                            <td>Updating your base, partner and seller profiles; liking and unliking
+                                partners and projects; sending partnership requests and responding to
+                                the ones you receive.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="margin-top: 1.5rem;">Write access is an optional checkbox. If you leave it
+                unchecked, the tools that change things are never handed to Claude at all — it can't
+                see them, let alone call them. A read-only connection lists 12 tools instead of 19.
+                You can reconnect later with write access if you change your mind.</p>
+
+            <p>Approving also issues a token that keeps the connection alive for 30 days of use
+                without asking you to sign in again. Every day you use it slides that window
+                forward.</p>
+        </div>
+
+        <!-- Example prompts -->
+        <div class="claude-section">
+            <h2 class="claude-section-title">Things to ask once you're connected</h2>
+            <div class="prompt-list">
+                <div class="prompt-card">"Show me my matched projects and tell me which two are
+                    worth my time this week."</div>
+                <div class="prompt-card">"Which partners match my project, and what does each one
+                    bring that the others don't?"</div>
+                <div class="prompt-card">"Rewrite my partner profile headline to lead with my
+                    healthcare network."</div>
+                <div class="prompt-card">"Summarize the partnership requests waiting on me and draft
+                    a reply to each."</div>
+                <div class="prompt-card">"Find projects in fintech that need someone with enterprise
+                    sales relationships."</div>
+                <div class="prompt-card">"Send a partnership request for the logistics project I
+                    liked yesterday."</div>
+            </div>
+        </div>
+
+        <!-- Managing the connection -->
+        <div class="claude-section">
+            <h2 class="claude-section-title">Managing or removing the connection</h2>
+            <p>Disconnect from Claude's connector settings at any time — access is revoked
+                immediately, and Claude loses the ability to see or act on your RainMatch data the
+                moment you do. In Claude Code, remove it entirely with:</p>
+            <div class="code-block">
+                <code id="remove-command">claude mcp remove rainmatch</code>
+                <button class="copy-btn" type="button" data-copy-target="remove-command">Copy</button>
+            </div>
+            <p>If a connection sits unused for 30 days it expires on its own, and reconnecting simply
+                means approving once more.</p>
+        </div>
+
+        <!-- Troubleshooting -->
+        <div class="claude-section">
+            <h2 class="claude-section-title">Troubleshooting</h2>
+            <ul>
+                <li><strong>The connector won't add.</strong> Check the URL character by character.
+                    The path <code>/v1/mcp</code> is required, and a trailing slash will break it.</li>
+                <li><strong>Fewer tools than you expected.</strong> You most likely approved read
+                    access only. Disconnect, reconnect, and tick the write box.</li>
+                <li><strong>No matches come back.</strong> Matching runs on a completed profile.
+                    Fill yours in inside the app, then ask again.</li>
+                <li><strong>Still stuck?</strong> <a href="contact.html">Get in touch</a> and we'll
+                    take a look.</li>
+            </ul>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to put your network to work?</h2>
+            <p>Create your RainMatch account, then connect it to Claude and let it do the digging.</p>
+            <div class="cta-buttons">
+                <a href="https://app.rainmatch.ai/sign-up" target="_blank" class="primary-btn">Sign
+                    Up Free</a>
+                <a href="faq.html" class="secondary-btn">Read the FAQ</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <h3 style="font-size: 1.5rem;">RainMatch</h3>
+            <p style="margin-bottom: 1rem;">Turn your network into revenue</p>
+            <div class="social-links">
+                <a id="tiktok" href="https://www.tiktok.com/@rainmatch" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#fff"
+                            d="M16.6 5.82s.51.5 0 0A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48" />
+                    </svg>
+                </a>
+                <a id="instagram" href="https://www.instagram.com/rainmatch/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#fff"
+                            d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                    </svg>
+                </a>
+                <a id="x-twitter" href="https://x.com/RainMatch2025" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                        <g fill="none">
+                            <g clip-path="url(#SVGG1Ot4cAD)">
+                                <path fill="#fff"
+                                    d="M11.025.656h2.147L8.482 6.03L14 13.344H9.68L6.294 8.909l-3.87 4.435H.275l5.016-5.75L0 .657h4.43L7.486 4.71zm-.755 11.4h1.19L3.78 1.877H2.504z" />
+                            </g>
+                            <defs>
+                                <clipPath id="SVGG1Ot4cAD">
+                                    <path fill="#fff" d="M0 0h14v14H0z" />
+                                </clipPath>
+                            </defs>
+                        </g>
+                    </svg>
+                </a>
+                <a id="youtube" href="https://www.youtube.com/@rainmatch" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#fff"
+                            d="m10 15l5.19-3L10 9zm11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33-.22 2.65-.28c1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73" />
+                    </svg>
+                </a>
+                <a id="linkedin" href="https://www.linkedin.com/company/rainmatch" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="#fff"
+                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
+                    </svg>
+                </a>
+            </div>
+            <p>
+                <a href="index.html">Home</a> |
+                <a href="faq.html">FAQ</a> |
+                <a href="blog/index.html">Blog</a> |
+                <a href="claude.html">Claude</a> |
+                <a href="privacy.html">Privacy Policy</a> |
+                <a href="contact.html">Contact Us</a>
+            </p>
+            <p style="margin-top: 1rem;">&copy; 2025 Rainmakers LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Copy-to-clipboard for the endpoint and CLI commands
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', async () => {
+                const source = document.getElementById(button.dataset.copyTarget);
+                if (!source) return;
+
+                try {
+                    await navigator.clipboard.writeText(source.textContent.trim());
+                } catch {
+                    // Clipboard API needs a secure context; fall back to selecting
+                    // the text so the reader can copy it themselves.
+                    const range = document.createRange();
+                    range.selectNodeContents(source);
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    return;
+                }
+
+                const original = button.textContent;
+                button.textContent = 'Copied';
+                setTimeout(() => {button.textContent = original;}, 1500);
+            });
+        });
+    </script>
+</body>
+
+</html>
