@@ -172,7 +172,8 @@
     --shadow-3: 0 12px 32px rgba(0, 0, 0, 0.55);
 }
 
-/* Opt-in until the pages stop hard-coding white text. */
+/* Opt-in with data-theme="light" on <html>. Pages use semantic tokens only,
+   so it should work, but nobody has reviewed every page in light yet. */
 [data-theme="light"] {
     color-scheme: light;
 
