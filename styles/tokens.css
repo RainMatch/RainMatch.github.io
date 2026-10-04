@@ -1,0 +1,147 @@
+/*
+ * Rainmatch design tokens. Mirrors the app's
+ * rainmatch-mono/mobile/lib/theme/{palette,themes,tokens}.ts by hand — change a
+ * value there, change it here.
+ *
+ * Use the semantic names (--color-*) in page styles; the ramps exist so the
+ * semantic names have something to point at.
+ */
+
+:root {
+    /* Ramps. blue-400 is the brand primary, blue-700 the deep variant,
+       yellow-400 the brand accent. */
+    --blue-50: #F0F6FF;
+    --blue-100: #D7E6FE;
+    --blue-200: #B1CDFC;
+    --blue-300: #82AFF7;
+    --blue-400: #4C8BF0;
+    --blue-500: #2C77E8;
+    --blue-600: #0B66D5;
+    --blue-700: #0353A4;
+    --blue-800: #063E79;
+    --blue-900: #082449;
+    --blue-950: #08152B;
+
+    --yellow-50: #FFFAEB;
+    --yellow-100: #FFF1C2;
+    --yellow-200: #FFE285;
+    --yellow-300: #FFD342;
+    --yellow-400: #FFC300;
+    --yellow-500: #E6A100;
+    --yellow-600: #BD7905;
+    --yellow-700: #915608;
+    --yellow-800: #653A0B;
+    --yellow-900: #3D240B;
+    --yellow-950: #251709;
+
+    --neutral-0: #FFFFFF;
+    --neutral-50: #F5F7F9;
+    --neutral-100: #E9ECF1;
+    --neutral-200: #DBDFE6;
+    --neutral-300: #B9C0CA;
+    --neutral-400: #8F96A3;
+    --neutral-500: #6B7280;
+    --neutral-600: #4D5460;
+    --neutral-700: #303640;
+    --neutral-800: #1E222A;
+    --neutral-850: #15181E;
+    --neutral-900: #0E1116;
+    --neutral-950: #080A0D;
+
+    /* Type: Figtree, same scale as the app (px values double as rem/16). */
+    --font-sans: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --text-display: 700 2rem/2.5rem var(--font-sans);
+    --text-title1: 700 1.5rem/1.875rem var(--font-sans);
+    --text-title2: 600 1.25rem/1.625rem var(--font-sans);
+    --text-headline: 600 1.0625rem/1.375rem var(--font-sans);
+    --text-body: 400 1rem/1.5rem var(--font-sans);
+    --text-subhead: 400 0.875rem/1.25rem var(--font-sans);
+    --text-caption: 500 0.75rem/1rem var(--font-sans);
+
+    /* 4pt spacing. */
+    --space-xxs: 2px;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+    --space-2xl: 32px;
+    --space-3xl: 48px;
+    --space-4xl: 64px;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 999px;
+
+    --duration-fast: 120ms;
+    --duration-base: 200ms;
+    --easing: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Dark is the default, as in the app. */
+:root,
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-bg: var(--neutral-900);
+    --color-surface: var(--neutral-850);
+    --color-surface-raised: var(--neutral-800);
+    --color-surface-highest: var(--neutral-700);
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-strong: rgba(255, 255, 255, 0.16);
+
+    --color-text: var(--neutral-100);
+    --color-text-muted: var(--neutral-300);
+    --color-text-subtle: var(--neutral-400);
+
+    /* --color-primary is the fill (white text on it passes AA);
+       --color-primary-text is the blue for text on a dark surface. */
+    --color-primary: var(--blue-600);
+    --color-primary-pressed: var(--blue-700);
+    --color-on-primary: var(--neutral-0);
+    --color-primary-text: var(--blue-400);
+    --color-primary-text-hover: var(--blue-300);
+
+    --color-accent: var(--yellow-400);
+    --color-accent-pressed: var(--yellow-500);
+    --color-on-accent: var(--neutral-950);
+    --color-accent-text: var(--yellow-400);
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.45);
+    --shadow-3: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* Opt-in until the pages stop hard-coding white text. */
+[data-theme="light"] {
+    color-scheme: light;
+
+    --color-bg: var(--neutral-50);
+    --color-surface: var(--neutral-0);
+    --color-surface-raised: var(--neutral-0);
+    --color-surface-highest: var(--neutral-200);
+    --color-border: var(--neutral-200);
+    --color-border-strong: var(--neutral-300);
+
+    --color-text: var(--neutral-900);
+    --color-text-muted: var(--neutral-600);
+    --color-text-subtle: var(--neutral-500);
+
+    --color-primary: var(--blue-600);
+    --color-primary-pressed: var(--blue-700);
+    --color-on-primary: var(--neutral-0);
+    --color-primary-text: var(--blue-600);
+    --color-primary-text-hover: var(--blue-700);
+
+    --color-accent: var(--yellow-400);
+    --color-accent-pressed: var(--yellow-500);
+    --color-on-accent: var(--neutral-950);
+    --color-accent-text: var(--yellow-700);
+
+    --shadow-1: 0 1px 2px rgba(14, 17, 22, 0.06), 0 1px 3px rgba(14, 17, 22, 0.08);
+    --shadow-2: 0 4px 12px rgba(14, 17, 22, 0.08), 0 1px 3px rgba(14, 17, 22, 0.06);
+    --shadow-3: 0 12px 32px rgba(14, 17, 22, 0.12), 0 2px 6px rgba(14, 17, 22, 0.06);
+}

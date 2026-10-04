@@ -40,7 +40,11 @@
     <meta name="twitter:image" content="https://rainmatch.ai/assets/Logo_store_transparent.png">
 
     <!-- Additional SEO -->
-    <meta name="theme-color" content="#0D1117">
+    <meta name="theme-color" content="#0E1116">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles/tokens.css" />
     <link rel="stylesheet" href="styles/index.css" />
 
     <style>
@@ -78,10 +82,10 @@
         .claude-section-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #fbbf24;
+            color: var(--color-accent);
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+            border-bottom: 2px solid color-mix(in srgb, var(--yellow-400) 30%, transparent);
         }
 
         .claude-section p,
@@ -103,11 +107,11 @@
         }
 
         .claude-section a {
-            color: #fbbf24;
+            color: var(--color-accent);
         }
 
         .claude-section strong {
-            color: #fbbf24;
+            color: var(--color-accent);
         }
 
         /* Numbered setup steps */
@@ -126,7 +130,7 @@
             width: 2.25rem;
             height: 2.25rem;
             border-radius: 9999px;
-            background: hsl(210, 97%, 51%);
+            background: var(--color-primary);
             color: white;
             font-weight: 700;
             display: flex;
@@ -155,7 +159,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            background: #0b0f16;
+            background: var(--color-bg);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 10px;
             padding: 0.85rem 1rem;
@@ -167,9 +171,9 @@
             min-width: 0;
             overflow-x: auto;
             white-space: nowrap;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-family: var(--font-mono);
             font-size: 0.95rem;
-            color: #fbbf24;
+            color: var(--color-accent);
         }
 
         .copy-btn {
@@ -186,14 +190,14 @@
         }
 
         .copy-btn:hover {
-            background: rgba(251, 191, 36, 0.2);
-            border-color: #fbbf24;
-            color: #fbbf24;
+            background: color-mix(in srgb, var(--yellow-400) 20%, transparent);
+            border-color: var(--color-accent);
+            color: var(--color-accent);
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
-            border-left: 4px solid #fbbf24;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--yellow-400) 10%, transparent) 0%, color-mix(in srgb, var(--yellow-400) 5%, transparent) 100%);
+            border-left: 4px solid var(--color-accent);
             padding: 1rem 1.25rem;
             border-radius: 0 8px 8px 0;
             margin: 1rem 0;
@@ -205,8 +209,8 @@
         }
 
         .highlight-box code {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-            color: #fbbf24;
+            font-family: var(--font-mono);
+            color: var(--color-accent);
         }
 
         /* Permissions table */
@@ -243,8 +247,8 @@
         }
 
         .perm-table code {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-            color: #fbbf24;
+            font-family: var(--font-mono);
+            color: var(--color-accent);
             white-space: nowrap;
         }
 
@@ -259,7 +263,7 @@
         .prompt-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 3px solid hsl(210, 97%, 51%);
+            border-left: 3px solid var(--color-primary);
             border-radius: 10px;
             padding: 1rem 1.25rem;
             color: rgba(255, 255, 255, 0.85);
@@ -304,24 +308,24 @@
         }
 
         .cta-buttons .primary-btn {
-            background: hsl(210, 97%, 51%);
+            background: var(--color-primary);
             color: white;
         }
 
         .cta-buttons .primary-btn:hover {
-            background: hsl(210, 97%, 45%);
+            background: var(--color-primary-pressed);
             transform: translateY(-2px);
         }
 
         .cta-buttons .secondary-btn {
             background: transparent;
-            color: #fbbf24;
-            border: 2px solid #fbbf24;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
         }
 
         .cta-buttons .secondary-btn:hover {
-            background: #fbbf24;
-            color: #1f2937;
+            background: var(--color-accent);
+            color: var(--color-on-accent);
         }
 
         /* Responsive */

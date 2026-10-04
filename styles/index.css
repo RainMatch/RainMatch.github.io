@@ -13,14 +13,24 @@
     align-items: center;
     overflow-x: hidden;
     --max-width: 1440px;
-    --primary: hsl(210, 97%, 51%);
-    --yellow: #fbbf24;
+    /* Older names, kept so existing rules keep working. Prefer the
+       --color-* tokens from tokens.css. */
+    --primary: var(--color-primary);
+    --yellow: var(--color-accent);
+}
+
+/* Form controls don't inherit the page font by default. */
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-sans);
     line-height: 1.6;
-    background-color: #0D1117;
+    background-color: var(--color-bg);
     color: #333;
     justify-items: center;
 }
@@ -98,7 +108,7 @@ a {
 
 .hero-img {
     border-radius: 16px;
-    box-shadow:  hsl(210, 97%, 10%) 0px 0px 10px 10px;
+    box-shadow:  var(--blue-950) 0px 0px 10px 10px;
 }
 
 .hero-img-primary {
@@ -114,7 +124,7 @@ a {
 }
 
 .hero h1 .highlight {
-    color: #fbbf24;
+    color: var(--color-accent);
     font-size: 3.5rem;
 }
 
@@ -142,12 +152,12 @@ a {
 }
 
 .primary {
-    background-color: hsl(210, 97%, 51%);
+    background-color: var(--color-primary);
     border-radius: 9999px;
 }
 
 .primary:hover {
-    background-color: hsl(210, 97%, 45%);
+    background-color: var(--color-primary-pressed);
 }
 
 
@@ -228,11 +238,11 @@ a {
 }
 
 .who-its-for .sellers::before {
-    background: linear-gradient(90deg, var(--primary), #60a5fa);
+    background: linear-gradient(90deg, var(--primary), var(--blue-300));
 }
 
 .who-its-for .partners::before {
-    background: linear-gradient(90deg, var(--yellow), #fcd34d);
+    background: linear-gradient(90deg, var(--yellow), var(--yellow-300));
 }
 
 .who-its-for .box:hover {
@@ -257,14 +267,14 @@ a {
 }
 
 .who-its-for .sellers h3 {
-    background: linear-gradient(135deg, var(--primary), #60a5fa);
+    background: linear-gradient(135deg, var(--primary), var(--blue-300));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .who-its-for .partners h3 {
-    background: linear-gradient(135deg, var(--yellow), #fcd34d);
+    background: linear-gradient(135deg, var(--yellow), var(--yellow-300));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -299,13 +309,13 @@ a {
 }
 
 .role-tab.sellers {
-    background: hsl(210, 97%, 51%);
+    background: var(--color-primary);
     color: white;
 }
 
 .role-tab.partners {
-    background: #fbbf24;
-    color: #1f2937;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
 }
 
 .role-tab:not(.active) {
@@ -355,8 +365,8 @@ a {
 }
 
 .partners-path .step-icon {
-    background: #fbbf24;
-    color: #1f2937;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
 }
 
 .step-header {
@@ -406,7 +416,7 @@ footer p {
 }
 
 footer a {
-    color: #fbbf24;
+    color: var(--color-accent);
     text-decoration: none;
     margin: 0 0.5rem;
 }
@@ -470,7 +480,7 @@ footer a:hover {
 .carousel-item.active {
     z-index: 10;
     transform: translate(-50%, -50%) translateZ(0) scale(1);
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8), 0 0 80px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--blue-500) 80%, transparent), 0 0 80px color-mix(in srgb, var(--blue-500) 40%, transparent);
     border-radius: 12px;
 }
 
@@ -538,8 +548,8 @@ footer a:hover {
 }
 
 .control-btn:hover {
-    background: rgba(59, 130, 246, 0.3);
-    border-color: rgba(59, 130, 246, 0.6);
+    background: color-mix(in srgb, var(--blue-500) 30%, transparent);
+    border-color: color-mix(in srgb, var(--blue-500) 60%, transparent);
     transform: scale(1.05);
 }
 

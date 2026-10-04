@@ -40,7 +40,11 @@
     <meta name="twitter:image" content="https://rainmatch.ai/assets/Logo_store_transparent.png">
 
     <!-- Additional SEO -->
-    <meta name="theme-color" content="#0D1117">
+    <meta name="theme-color" content="#0E1116">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="styles/tokens.css" />
     <link rel="stylesheet" href="styles/index.css" />
 
     <!-- FAQ Schema -->
@@ -128,10 +132,10 @@
         .faq-section-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #fbbf24;
+            color: var(--color-accent);
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+            border-bottom: 2px solid color-mix(in srgb, var(--yellow-400) 30%, transparent);
         }
 
         .faq-item {
@@ -160,13 +164,13 @@
         }
 
         .faq-question:hover {
-            color: #fbbf24;
+            color: var(--color-accent);
         }
 
         .faq-icon {
             font-size: 1.5rem;
             transition: transform 0.3s ease;
-            color: #fbbf24;
+            color: var(--color-accent);
         }
 
         .faq-item.active .faq-icon {
@@ -199,12 +203,12 @@
         }
 
         .faq-answer-content strong {
-            color: #fbbf24;
+            color: var(--color-accent);
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
-            border-left: 4px solid #fbbf24;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--yellow-400) 10%, transparent) 0%, color-mix(in srgb, var(--yellow-400) 5%, transparent) 100%);
+            border-left: 4px solid var(--color-accent);
             padding: 1rem 1.25rem;
             border-radius: 0 8px 8px 0;
             margin: 1rem 0;
@@ -248,24 +252,24 @@
         }
 
         .cta-buttons .primary-btn {
-            background: hsl(210, 97%, 51%);
+            background: var(--color-primary);
             color: white;
         }
 
         .cta-buttons .primary-btn:hover {
-            background: hsl(210, 97%, 45%);
+            background: var(--color-primary-pressed);
             transform: translateY(-2px);
         }
 
         .cta-buttons .secondary-btn {
             background: transparent;
-            color: #fbbf24;
-            border: 2px solid #fbbf24;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
         }
 
         .cta-buttons .secondary-btn:hover {
-            background: #fbbf24;
-            color: #1f2937;
+            background: var(--color-accent);
+            color: var(--color-on-accent);
         }
 
         /* Responsive */
@@ -660,7 +664,7 @@
                 <div class="faq-answer">
                     <div class="faq-answer-content">
                         Yes. RainMatch is built with enterprise-grade security, secure authentication, and privacy
-                        controls. For more details, see our <a href="privacy.html" style="color: #fbbf24;">Privacy
+                        controls. For more details, see our <a href="privacy.html" style="color: var(--color-accent);">Privacy
                             Policy</a>.
                     </div>
                 </div>
@@ -676,7 +680,7 @@
                         Yes. RainMatch runs a connector for <strong>Claude</strong>, so you can ask Claude to browse
                         your matches, update your profile, and send partnership requests on your behalf. It acts as
                         you, and you choose whether to grant read-only or full access when you approve it. See the
-                        <a href="claude.html" style="color: #fbbf24;">setup instructions</a>.
+                        <a href="claude.html" style="color: var(--color-accent);">setup instructions</a>.
                     </div>
                 </div>
             </div>

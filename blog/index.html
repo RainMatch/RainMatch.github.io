@@ -25,7 +25,11 @@
     <meta property="og:image" content="https://rainmatch.ai/assets/Logo_store_transparent.png">
     <meta property="og:site_name" content="RainMatch">
 
-    <meta name="theme-color" content="#0D1117">
+    <meta name="theme-color" content="#0E1116">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../styles/tokens.css" />
     <link rel="stylesheet" href="../styles/index.css" />
 
     <style>
@@ -116,7 +120,7 @@
         }
 
         .blog-card-title a:hover {
-            color: hsl(210, 97%, 65%);
+            color: var(--color-primary-text);
         }
 
         .blog-card-excerpt {
@@ -161,8 +165,8 @@
         }
 
         .page-btn.active {
-            background: hsl(210, 97%, 51%);
-            border-color: hsl(210, 97%, 51%);
+            background: var(--color-primary);
+            border-color: var(--color-primary);
         }
 
         .page-btn:disabled {
