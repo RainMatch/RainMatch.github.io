@@ -1,0 +1,72 @@
+/* Contact and email-verified pages: one centred raised card. */
+
+.contact-page {
+    display: flex;
+    justify-content: center;
+    padding-block: var(--space-3xl);
+}
+
+@media (min-width: 840px) {
+    .contact-page {
+        padding-block: var(--space-4xl);
+    }
+}
+
+.contact-card {
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    text-align: center;
+}
+
+@media (min-width: 600px) {
+    .contact-card {
+        padding: var(--space-2xl);
+    }
+}
+
+.contact-card .icon-tile {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+}
+
+.contact-card .icon-tile svg {
+    width: 26px;
+    height: 26px;
+}
+
+.contact-card > p {
+    color: var(--color-text-muted);
+}
+
+.email-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-block: var(--space-sm);
+}
+
+.email-address {
+    font: var(--text-title2);
+    letter-spacing: var(--tracking-title2);
+    color: var(--color-text);
+    overflow-wrap: anywhere;
+}
+
+.email-panel .btn {
+    margin-top: var(--space-sm);
+}
+
+.email-panel .btn svg {
+    transition: transform var(--duration-fast) var(--easing);
+}
+
+.email-panel .btn:hover svg {
+    transform: translateX(3px);
+}
