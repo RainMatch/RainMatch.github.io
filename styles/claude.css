@@ -1,0 +1,80 @@
+/* Claude connector page. Steps, code blocks, table, callout and CTA band
+   come from components.css. */
+
+.claude-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+}
+
+.claude-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    color: var(--color-text-muted);
+}
+
+.claude-group h2 {
+    font: var(--text-title2);
+    letter-spacing: var(--tracking-title2);
+    color: var(--color-text);
+}
+
+.claude-group strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.claude-group > ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding-left: var(--space-xl);
+}
+
+.claude-group > ul li::marker {
+    color: var(--color-text-subtle);
+}
+
+/* Numbered steps in one card, divided by hairlines. */
+.step-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.step-list > .step-item + .step-item {
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+}
+
+.prompt-list {
+    display: grid;
+    gap: var(--space-md);
+}
+
+@media (min-width: 600px) {
+    .prompt-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.prompt-card {
+    font: var(--text-callout);
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: var(--color-text);
+    position: relative;
+    padding-left: calc(var(--space-xl) + var(--space-sm));
+}
+
+/* Speech-mark accent in the corner. */
+.prompt-card::before {
+    content: "\201C";
+    position: absolute;
+    left: var(--space-md);
+    top: var(--space-sm);
+    font: 700 2rem/1 var(--font-sans);
+    color: var(--color-primary-text);
+}
