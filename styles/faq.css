@@ -1,0 +1,23 @@
+/* FAQ page. The accordion, callout and CTA band come from components.css. */
+
+.faq-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+}
+
+.faq-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* Answers mix bare text with lists and callouts, so space the blocks
+   themselves rather than relying on sibling margins. */
+.faq-body .accordion-panel ul {
+    margin-block: var(--space-sm);
+}
+
+.faq-body .accordion-panel .callout {
+    margin-block: var(--space-md);
+}
