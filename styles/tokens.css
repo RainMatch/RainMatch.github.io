@@ -48,6 +48,20 @@
     --neutral-900: #0E1116;
     --neutral-950: #080A0D;
 
+    /* Status ramps: green is money and success, red is destructive and errors. */
+    --green-50: #ECFDF5;
+    --green-400: #34D399;
+    --green-500: #10B981;
+    --green-700: #047857;
+    --green-950: #06251B;
+
+    --red-50: #FEF2F2;
+    --red-400: #F87171;
+    --red-500: #EF4444;
+    --red-600: #DC2626;
+    --red-700: #B91C1C;
+    --red-950: #2D1213;
+
     /* Type: Figtree, same scale as the app (px values double as rem/16). */
     --font-sans: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -56,8 +70,22 @@
     --text-title2: 600 1.25rem/1.625rem var(--font-sans);
     --text-headline: 600 1.0625rem/1.375rem var(--font-sans);
     --text-body: 400 1rem/1.5rem var(--font-sans);
+    --text-callout: 500 0.9375rem/1.25rem var(--font-sans);
     --text-subhead: 400 0.875rem/1.25rem var(--font-sans);
     --text-caption: 500 0.75rem/1rem var(--font-sans);
+    --text-overline: 600 0.6875rem/0.875rem var(--font-sans);
+
+    /* Letter-spacing that goes with the levels above (the font shorthand
+       can't carry it). */
+    --tracking-display: -0.5px;
+    --tracking-title1: -0.3px;
+    --tracking-title2: -0.2px;
+    --tracking-overline: 0.6px;
+
+    /* Web only, not in the app: the marketing hero needs a bigger size
+       than display. Scales from 40px on phones to 64px on desktop. */
+    --text-hero: 700 clamp(2.5rem, 4vw + 1.25rem, 4rem)/1.1 var(--font-sans);
+    --tracking-hero: -1px;
 
     /* 4pt spacing. */
     --space-xxs: 2px;
@@ -78,7 +106,19 @@
 
     --duration-fast: 120ms;
     --duration-base: 200ms;
+    --duration-slow: 320ms;
     --easing: cubic-bezier(0.2, 0, 0, 1);
+    --press-scale: 0.98;
+    --press-scale-sm: 0.96;
+
+    /* Reading columns. The app caps at 640; prose on the web gets a little
+       more (web only). */
+    --content-max: 640px;
+    --content-prose: 680px;
+    --page-max: 1200px;
+
+    /* Breakpoints (media queries can't read variables, so these are a note):
+       compact < 600px, medium 600–839px, expanded >= 840px, wide >= 1200px. */
 }
 
 /* Dark is the default, as in the app. */
@@ -90,12 +130,14 @@
     --color-surface: var(--neutral-850);
     --color-surface-raised: var(--neutral-800);
     --color-surface-highest: var(--neutral-700);
+    --color-surface-sunken: var(--neutral-950);
     --color-border: rgba(255, 255, 255, 0.08);
     --color-border-strong: rgba(255, 255, 255, 0.16);
 
     --color-text: var(--neutral-100);
     --color-text-muted: var(--neutral-300);
     --color-text-subtle: var(--neutral-400);
+    --color-text-disabled: var(--neutral-600);
 
     /* --color-primary is the fill (white text on it passes AA);
        --color-primary-text is the blue for text on a dark surface. */
@@ -104,11 +146,26 @@
     --color-on-primary: var(--neutral-0);
     --color-primary-text: var(--blue-400);
     --color-primary-text-hover: var(--blue-300);
+    --color-primary-container: var(--blue-950);
+    --color-on-primary-container: var(--blue-200);
 
     --color-accent: var(--yellow-400);
     --color-accent-pressed: var(--yellow-500);
     --color-on-accent: var(--neutral-950);
     --color-accent-text: var(--yellow-400);
+    --color-accent-container: var(--yellow-950);
+    --color-on-accent-container: var(--yellow-200);
+
+    --color-success: var(--green-400);
+    --color-success-container: var(--green-950);
+    --color-danger: var(--red-400);
+    --color-danger-fill: var(--red-500);
+    --color-danger-pressed: var(--red-600);
+    --color-danger-container: var(--red-950);
+
+    --color-scrim: rgba(0, 0, 0, 0.5);
+    --color-pressed-overlay: rgba(255, 255, 255, 0.06);
+    --color-focus-ring: var(--blue-400);
 
     --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.45);
@@ -123,23 +180,41 @@
     --color-surface: var(--neutral-0);
     --color-surface-raised: var(--neutral-0);
     --color-surface-highest: var(--neutral-200);
+    --color-surface-sunken: var(--neutral-100);
     --color-border: var(--neutral-200);
     --color-border-strong: var(--neutral-300);
 
     --color-text: var(--neutral-900);
     --color-text-muted: var(--neutral-600);
     --color-text-subtle: var(--neutral-500);
+    --color-text-disabled: var(--neutral-300);
 
     --color-primary: var(--blue-600);
     --color-primary-pressed: var(--blue-700);
     --color-on-primary: var(--neutral-0);
     --color-primary-text: var(--blue-600);
     --color-primary-text-hover: var(--blue-700);
+    --color-primary-container: var(--blue-50);
+    --color-on-primary-container: var(--blue-800);
 
+    /* Yellow fails contrast as text on white: a fill only in light mode. */
     --color-accent: var(--yellow-400);
     --color-accent-pressed: var(--yellow-500);
     --color-on-accent: var(--neutral-950);
     --color-accent-text: var(--yellow-700);
+    --color-accent-container: var(--yellow-50);
+    --color-on-accent-container: var(--yellow-800);
+
+    --color-success: var(--green-700);
+    --color-success-container: var(--green-50);
+    --color-danger: var(--red-700);
+    --color-danger-fill: var(--red-500);
+    --color-danger-pressed: var(--red-700);
+    --color-danger-container: var(--red-50);
+
+    --color-scrim: rgba(14, 17, 22, 0.4);
+    --color-pressed-overlay: rgba(14, 17, 22, 0.05);
+    --color-focus-ring: var(--blue-500);
 
     --shadow-1: 0 1px 2px rgba(14, 17, 22, 0.06), 0 1px 3px rgba(14, 17, 22, 0.08);
     --shadow-2: 0 4px 12px rgba(14, 17, 22, 0.08), 0 1px 3px rgba(14, 17, 22, 0.06);
