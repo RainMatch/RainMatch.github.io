@@ -157,7 +157,7 @@
     max-height: 400px;
     object-fit: cover;
     border-radius: var(--radius-lg);
-    margin-top: var(--space-md);
+    margin-bottom: var(--space-2xl);
 }
 
 /* Body: 17px at 1.7 for long reads. */
