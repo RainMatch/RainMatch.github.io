@@ -18,7 +18,7 @@
     }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1280px) {
     .articles-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -65,14 +65,14 @@
 }
 
 .blog-card-link svg {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     stroke: currentColor;
     transition: transform var(--duration-fast) var(--easing);
 }
 
 .blog-card:hover .blog-card-link svg {
-    transform: translateX(4px);
+    transform: translateX(0.25rem);
 }
 
 .pagination:not(:empty) {
@@ -154,7 +154,7 @@
 
 .article-header-image {
     width: 100%;
-    max-height: 400px;
+    max-height: 25rem;
     object-fit: cover;
     border-radius: var(--radius-lg);
     margin-bottom: var(--space-2xl);
@@ -217,7 +217,7 @@
 .article-content a:not(.btn) {
     text-decoration: underline;
     text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
-    text-underline-offset: 3px;
+    text-underline-offset: 0.1875rem;
 }
 
 /* Pull quote and tip box: callouts (components.css) by another name. */
@@ -225,7 +225,7 @@
 .tip-box {
     position: relative;
     margin-block: var(--space-2xl);
-    padding: var(--space-lg) var(--space-xl) var(--space-lg) calc(var(--space-xl) + 4px);
+    padding: var(--space-lg) var(--space-xl) var(--space-lg) calc(var(--space-xl) + 0.25rem);
     border-radius: var(--radius-md);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -237,7 +237,7 @@
     content: "";
     position: absolute;
     inset: 0 auto 0 0;
-    width: 4px;
+    width: 0.25rem;
     background: var(--color-primary);
 }
 
@@ -320,8 +320,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
     flex-shrink: 0;
     border-radius: var(--radius-full);
     background: var(--color-primary);

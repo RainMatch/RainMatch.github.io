@@ -3,6 +3,9 @@
  * rainmatch-mono/mobile/lib/theme/{palette,themes,tokens}.ts by hand — change a
  * value there, change it here.
  *
+ * Sizes are in rem (px/16) so the root size steps in base.css scale the
+ * whole UI; px is kept only for hairlines, shadows and media queries.
+ *
  * Use the semantic names (--color-*) in page styles; the ramps exist so the
  * semantic names have something to point at.
  */
@@ -89,25 +92,25 @@
 
     /* Web only: section and page headings on marketing pages. The app's
        title1 (24px) is sized for a phone held close; on a desktop page it
-       reads small. Scales 28px -> 40px. */
-    --text-section: 700 clamp(1.75rem, 1.2vw + 1.3rem, 2.5rem)/1.15 var(--font-sans);
+       reads small. 28px on phones, up to 2.5rem (50px at the 20px desktop root). */
+    --text-section: 700 clamp(1.75rem, 2vw + 1.1rem, 2.5rem)/1.15 var(--font-sans);
     --tracking-section: -0.6px;
 
     /* 4pt spacing. */
-    --space-xxs: 2px;
-    --space-xs: 4px;
-    --space-sm: 8px;
-    --space-md: 12px;
-    --space-lg: 16px;
-    --space-xl: 24px;
-    --space-2xl: 32px;
-    --space-3xl: 48px;
-    --space-4xl: 64px;
+    --space-xxs: 0.125rem;
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 0.75rem;
+    --space-lg: 1rem;
+    --space-xl: 1.5rem;
+    --space-2xl: 2rem;
+    --space-3xl: 3rem;
+    --space-4xl: 4rem;
 
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
     --radius-full: 999px;
 
     --duration-fast: 120ms;
@@ -119,9 +122,9 @@
 
     /* Reading columns. The app caps at 640; prose on the web gets a little
        more (web only). */
-    --content-max: 640px;
-    --content-prose: 680px;
-    --page-max: 1200px;
+    --content-max: 40rem;
+    --content-prose: 42.5rem;
+    --page-max: 75rem;
 
     /* Breakpoints (media queries can't read variables, so these are a note):
        compact < 600px, medium 600–839px, expanded >= 840px, wide >= 1200px. */

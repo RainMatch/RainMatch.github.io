@@ -14,7 +14,7 @@
 
 .contact-card {
     width: 100%;
-    max-width: 560px;
+    max-width: 35rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,14 +29,14 @@
 }
 
 .contact-card .icon-tile {
-    width: 56px;
-    height: 56px;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: var(--radius-lg);
 }
 
 .contact-card .icon-tile svg {
-    width: 26px;
-    height: 26px;
+    width: 1.625rem;
+    height: 1.625rem;
 }
 
 .contact-card > p {
@@ -68,5 +68,5 @@
 }
 
 .email-panel .btn:hover svg {
-    transform: translateX(3px);
+    transform: translateX(0.1875rem);
 }
