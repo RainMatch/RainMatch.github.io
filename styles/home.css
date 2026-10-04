@@ -14,7 +14,9 @@
     align-items: center;
 }
 
-@media (min-width: 840px) {
+/* The hero goes two-column at 1024px: below that the headline column is too
+   narrow for the hero size and wraps awkwardly. */
+@media (min-width: 1024px) {
     .hero {
         padding-block: var(--space-3xl) var(--space-4xl);
         min-height: min(860px, calc(100vh - 80px));
@@ -35,7 +37,7 @@
     text-align: center;
 }
 
-@media (min-width: 840px) {
+@media (min-width: 1024px) {
     .hero-copy {
         align-items: flex-start;
         text-align: left;
@@ -73,7 +75,7 @@
     margin-top: var(--space-sm);
 }
 
-@media (min-width: 840px) {
+@media (min-width: 1024px) {
     .hero-copy .store-badges {
         justify-content: flex-start;
     }
@@ -149,7 +151,7 @@
     animation: glow-drift-b 22s ease-in-out infinite alternate;
 }
 
-@media (max-width: 839px) {
+@media (max-width: 1023px) {
     .hero-glow::before {
         width: 360px;
         height: 360px;
@@ -331,7 +333,8 @@
     gap: var(--space-md);
     text-align: center;
     color: var(--color-text-muted);
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
 }
 
 .about-copy strong {
@@ -380,6 +383,8 @@
 
 .role-card h3 {
     margin-top: var(--space-xs);
+    font: var(--text-title1);
+    letter-spacing: var(--tracking-title1);
 }
 
 .role-card p {
@@ -443,6 +448,11 @@
     }
 }
 
+.role-panel-head h3 {
+    font: var(--text-title1);
+    letter-spacing: var(--tracking-title1);
+}
+
 .role-panel-head {
     display: flex;
     flex-direction: column;
@@ -492,13 +502,12 @@
 }
 
 .step-card h4 {
+    font: var(--text-title2);
+    letter-spacing: var(--tracking-title2);
     color: var(--color-text);
 }
 
 .step-card p {
-    font: var(--text-subhead);
-    font-size: 0.9375rem;
-    line-height: 1.5rem;
     color: var(--color-text-muted);
 }
 

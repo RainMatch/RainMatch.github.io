@@ -87,6 +87,12 @@
     --text-hero: 700 clamp(2.5rem, 4vw + 1.25rem, 4rem)/1.1 var(--font-sans);
     --tracking-hero: -1px;
 
+    /* Web only: section and page headings on marketing pages. The app's
+       title1 (24px) is sized for a phone held close; on a desktop page it
+       reads small. Scales 28px -> 40px. */
+    --text-section: 700 clamp(1.75rem, 1.2vw + 1.3rem, 2.5rem)/1.15 var(--font-sans);
+    --tracking-section: -0.6px;
+
     /* 4pt spacing. */
     --space-xxs: 2px;
     --space-xs: 4px;

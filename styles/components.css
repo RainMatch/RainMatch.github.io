@@ -371,6 +371,11 @@
     margin-bottom: var(--space-2xl);
 }
 
+.section-head h2 {
+    font: var(--text-section);
+    letter-spacing: var(--tracking-section);
+}
+
 .section-head > p {
     color: var(--color-text-muted);
     max-width: var(--content-max);
@@ -571,8 +576,9 @@
     }
 
     .page-hero h1 {
-        font-size: 2.75rem;
-        line-height: 1.15;
+        font-size: 3rem;
+        line-height: 1.1;
+        letter-spacing: var(--tracking-hero);
     }
 }
 
@@ -619,8 +625,8 @@
 
 .cta-band h2,
 .cta-band h3 {
-    font: var(--text-title1);
-    letter-spacing: var(--tracking-title1);
+    font: var(--text-section);
+    letter-spacing: var(--tracking-section);
 }
 
 .cta-band p {
@@ -965,6 +971,12 @@ site-header.is-scrolled .site-header {
     border-radius: var(--radius-full);
 }
 
+.site-nav .btn,
+.site-actions .btn-sm {
+    font: var(--text-callout);
+    font-weight: 600;
+}
+
 .site-nav .btn {
     padding-inline: var(--space-md);
 }
@@ -984,8 +996,9 @@ site-header.is-scrolled .site-header {
     display: none;
 }
 
-/* Below expanded, the nav and sign-in collapse into a sheet. */
-@media (max-width: 839px) {
+/* Below 960px the nav and sign-in collapse into a sheet (the full bar needs
+   about 840px once the desktop type step applies). */
+@media (max-width: 959px) {
     .site-nav,
     .site-actions .site-sep,
     .site-actions .btn-ghost,
@@ -1014,7 +1027,7 @@ site-header.is-scrolled .site-header {
     display: none;
 }
 
-@media (max-width: 839px) {
+@media (max-width: 959px) {
     /* Drops down over the page instead of pushing it. */
     .site-menu {
         position: absolute;

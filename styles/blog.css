@@ -173,6 +173,8 @@
 
 .article-content h2 {
     font: var(--text-title1);
+    font-size: clamp(1.5rem, 0.6vw + 1.3rem, 1.875rem);
+    line-height: 1.25;
     letter-spacing: var(--tracking-title1);
     color: var(--color-text);
     margin-top: var(--space-3xl);

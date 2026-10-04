@@ -15,8 +15,8 @@
 }
 
 .claude-group h2 {
-    font: var(--text-title2);
-    letter-spacing: var(--tracking-title2);
+    font: var(--text-title1);
+    letter-spacing: var(--tracking-title1);
     color: var(--color-text);
 }
 
