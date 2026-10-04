@@ -1,0 +1,395 @@
+/*
+ * Blog index and the article template shared by every post. Posts keep their
+ * semantic class names (.pull-quote, .stat-block, .tactic-block…) and this
+ * file maps them onto the design system, so a new post needs no <style>.
+ */
+
+/* ---------- Index ---------- */
+
+.articles-grid {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 600px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+    }
+}
+
+@media (min-width: 1100px) {
+    .articles-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.blog-card-image {
+    width: calc(100% + 2 * var(--space-xl));
+    margin: calc(-1 * var(--space-xl)) calc(-1 * var(--space-xl)) var(--space-sm);
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.blog-card-title {
+    font: var(--text-title2);
+    letter-spacing: var(--tracking-title2);
+    color: var(--color-text);
+}
+
+.blog-card-excerpt {
+    color: var(--color-text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-top: auto;
+    padding-top: var(--space-sm);
+    font: var(--text-callout);
+    font-weight: 600;
+    color: var(--color-primary-text);
+}
+
+.blog-card-link svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    transition: transform var(--duration-fast) var(--easing);
+}
+
+.blog-card:hover .blog-card-link svg {
+    transform: translateX(4px);
+}
+
+.pagination:not(:empty) {
+    margin-top: var(--space-2xl);
+}
+
+.no-articles {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding-block: var(--space-3xl);
+}
+
+/* ---------- Article ---------- */
+
+.article-main {
+    padding-block: var(--space-2xl) 0;
+}
+
+@media (min-width: 840px) {
+    .article-main {
+        padding-top: var(--space-3xl);
+    }
+}
+
+.article-container {
+    width: 100%;
+    max-width: calc(var(--content-prose) + 2 * var(--space-lg));
+    margin-inline: auto;
+    padding-inline: var(--space-lg);
+}
+
+@media (min-width: 600px) {
+    .article-container {
+        max-width: calc(var(--content-prose) + 2 * var(--space-xl));
+        padding-inline: var(--space-xl);
+    }
+}
+
+.article-container > .back-link {
+    margin-bottom: var(--space-2xl);
+}
+
+.article-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.article-date {
+    font: var(--text-overline);
+    letter-spacing: var(--tracking-overline);
+    text-transform: uppercase;
+    color: var(--color-accent-text);
+}
+
+.article-title {
+    font: var(--text-display);
+    letter-spacing: var(--tracking-display);
+    color: var(--color-text);
+}
+
+@media (min-width: 600px) {
+    .article-title {
+        font-size: 2.5rem;
+        line-height: 1.15;
+    }
+}
+
+.article-subtitle {
+    font: var(--text-headline);
+    font-weight: 400;
+    font-size: 1.1875rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+
+.article-header-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-top: var(--space-md);
+}
+
+/* Body: 17px at 1.7 for long reads. */
+.article-content {
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+}
+
+.article-content > * + * {
+    margin-top: var(--space-lg);
+}
+
+.article-content h2 {
+    font: var(--text-title1);
+    letter-spacing: var(--tracking-title1);
+    color: var(--color-text);
+    margin-top: var(--space-3xl);
+}
+
+.article-content h3 {
+    font: var(--text-title2);
+    letter-spacing: var(--tracking-title2);
+    color: var(--color-text);
+    margin-top: var(--space-2xl);
+}
+
+.article-content > h2:first-child {
+    margin-top: 0;
+}
+
+.article-content h2 + *,
+.article-content h3 + * {
+    margin-top: var(--space-md);
+}
+
+.article-content ul,
+.article-content ol {
+    padding-left: var(--space-xl);
+}
+
+.article-content li + li {
+    margin-top: var(--space-sm);
+}
+
+.article-content li::marker {
+    color: var(--color-text-subtle);
+}
+
+.article-content strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.article-content a:not(.btn) {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    text-underline-offset: 3px;
+}
+
+/* Pull quote and tip box: callouts (components.css) by another name. */
+.pull-quote,
+.tip-box {
+    position: relative;
+    margin-block: var(--space-2xl);
+    padding: var(--space-lg) var(--space-xl) var(--space-lg) calc(var(--space-xl) + 4px);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+}
+
+.pull-quote::before,
+.tip-box::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--color-primary);
+}
+
+.pull-quote p {
+    font: var(--text-title2);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-text);
+}
+
+.tip-box p + p {
+    margin-top: var(--space-sm);
+}
+
+.tip-box::before {
+    background: var(--color-accent);
+}
+
+/* Stat block: the Stat component at article scale — a big figure with a
+   small label, not a sentence. */
+.stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-block: var(--space-xl);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-sunken);
+    border: 1px solid var(--color-border);
+}
+
+.stat-block .stat-number {
+    font: var(--text-hero);
+    font-size: clamp(2.25rem, 4vw + 1rem, 3rem);
+    letter-spacing: var(--tracking-hero);
+    color: var(--color-primary-text);
+}
+
+.stat-block p {
+    font: var(--text-callout);
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: var(--color-text-muted);
+}
+
+.stat-block .stat-label {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.stat-source {
+    font: var(--text-caption);
+    color: var(--color-text-subtle);
+}
+
+.stat-source a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Tactic block: a card with a number badge. */
+.tactic-block {
+    margin-block: var(--space-xl);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+}
+
+.tactic-block h3 {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: 0 0 var(--space-md);
+    font: var(--text-headline);
+    color: var(--color-text);
+}
+
+.tactic-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    font: var(--text-subhead);
+    font-weight: 700;
+}
+
+.tactic-block p,
+.tactic-block li {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.tactic-block ul {
+    margin-top: var(--space-md);
+}
+
+.tactic-block li + li {
+    margin-top: var(--space-xs);
+}
+
+.article-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin-block: var(--space-3xl);
+}
+
+/* Closing CTA: the CTA band. */
+.article-cta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-3xl);
+    padding: var(--space-2xl) var(--space-lg);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.article-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(60% 80% at 0% 0%, color-mix(in srgb, var(--blue-600) 22%, transparent), transparent 70%);
+}
+
+.article-content .article-cta h3 {
+    margin: 0;
+    font: var(--text-title1);
+    letter-spacing: var(--tracking-title1);
+}
+
+.article-content .article-cta p {
+    margin: 0;
+    max-width: var(--content-max);
+}
+
+.article-content .article-cta .btn {
+    margin-top: var(--space-sm);
+}
+
+.tactic-block p + p,
+.tactic-block ul + p,
+.tactic-block p + ul {
+    margin-top: var(--space-md);
+}
